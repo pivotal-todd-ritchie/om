@@ -30,7 +30,7 @@ func NewCertificateAuthorities(certificateAuthoritiesService certificateAuthorit
 }
 
 func (c CertificateAuthorities) Execute(args []string) error {
-	if _, err := jhanda.Parse(&c.Options, args); err != nil {
+	if _, err := ParseArgs(&c.Options, args); err != nil {
 		return fmt.Errorf("could not parse certificate-authorities flags: %s", err)
 	}
 

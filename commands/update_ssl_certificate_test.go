@@ -72,7 +72,7 @@ var _ = Describe("UpdateSSLCertificate", func() {
 			Context("when an unknown flag is provided", func() {
 				It("returns an error", func() {
 					err := command.Execute([]string{"--badflag"})
-					Expect(err).To(MatchError("could not parse update-ssl-certificate flags: flag provided but not defined: -badflag"))
+					Expect(err).To(MatchError("could not parse update-ssl-certificate flags: unknown flag `badflag'"))
 				})
 			})
 
@@ -81,7 +81,7 @@ var _ = Describe("UpdateSSLCertificate", func() {
 					err := command.Execute([]string{
 						"--private-key-pem", "some PrivateKey",
 					})
-					Expect(err).To(MatchError("could not parse update-ssl-certificate flags: missing required flag \"--certificate-pem\""))
+					Expect(err).To(MatchError("could not parse update-ssl-certificate flags: the required flag `--certificate-pem' was not specified"))
 				})
 			})
 
@@ -90,7 +90,7 @@ var _ = Describe("UpdateSSLCertificate", func() {
 					err := command.Execute([]string{
 						"--certificate-pem", "some CertPem",
 					})
-					Expect(err).To(MatchError("could not parse update-ssl-certificate flags: missing required flag \"--private-key-pem\""))
+					Expect(err).To(MatchError("could not parse update-ssl-certificate flags: the required flag `--private-key-pem' was not specified"))
 				})
 			})
 		})

@@ -153,7 +153,7 @@ var _ = Describe("StageProduct", func() {
 			It("returns an error", func() {
 				command := commands.NewStageProduct(fakeService, logger)
 				err := command.Execute([]string{"--badflag"})
-				Expect(err).To(MatchError("could not parse stage-product flags: flag provided but not defined: -badflag"))
+				Expect(err).To(MatchError("could not parse stage-product flags: unknown flag `badflag'"))
 			})
 		})
 
@@ -161,7 +161,7 @@ var _ = Describe("StageProduct", func() {
 			It("returns an error", func() {
 				command := commands.NewStageProduct(fakeService, logger)
 				err := command.Execute([]string{"--product-version", "1.0"})
-				Expect(err).To(MatchError("could not parse stage-product flags: missing required flag \"--product-name\""))
+				Expect(err).To(MatchError("could not parse stage-product flags: the required flag `-p, --product-name' was not specified"))
 			})
 		})
 
@@ -169,7 +169,7 @@ var _ = Describe("StageProduct", func() {
 			It("returns an error", func() {
 				command := commands.NewStageProduct(fakeService, logger)
 				err := command.Execute([]string{"--product-name", "some-product"})
-				Expect(err).To(MatchError("could not parse stage-product flags: missing required flag \"--product-version\""))
+				Expect(err).To(MatchError("could not parse stage-product flags: the required flag `-v, --product-version' was not specified"))
 			})
 		})
 

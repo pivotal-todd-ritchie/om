@@ -50,7 +50,7 @@ func (ec StagedDirectorConfig) Usage() jhanda.Usage {
 }
 
 func (ec StagedDirectorConfig) Execute(args []string) error {
-	if _, err := jhanda.Parse(&ec.Options, args); err != nil {
+	if _, err := ParseArgs(&ec.Options, args); err != nil {
 		return fmt.Errorf("could not parse staged-config flags: %s", err)
 	}
 

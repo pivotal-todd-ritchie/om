@@ -26,7 +26,7 @@ func NewGenerateCertificateAuthority(service generateCertificateAuthorityService
 }
 
 func (g GenerateCertificateAuthority) Execute(args []string) error {
-	if _, err := jhanda.Parse(&g.Options, args); err != nil {
+	if _, err := ParseArgs(&g.Options, args); err != nil {
 		return fmt.Errorf("could not parse generate-certificate-authority flags: %s", err)
 	}
 

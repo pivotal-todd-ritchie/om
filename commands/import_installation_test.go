@@ -310,7 +310,7 @@ var _ = Describe("ImportInstallation", func() {
 			It("returns an error", func() {
 				command := commands.NewImportInstallation(multipart, fakeService, "passphrase", logger)
 				err := command.Execute([]string{"--polling-interval", "0", "--badflag"})
-				Expect(err).To(MatchError("could not parse import-installation flags: flag provided but not defined: -badflag"))
+				Expect(err).To(MatchError("could not parse import-installation flags: unknown flag `badflag'"))
 			})
 		})
 
@@ -327,7 +327,7 @@ var _ = Describe("ImportInstallation", func() {
 			It("returns an error", func() {
 				command := commands.NewImportInstallation(multipart, fakeService, "passphrase", logger)
 				err := command.Execute([]string{"--polling-interval", "0"})
-				Expect(err).To(MatchError("could not parse import-installation flags: missing required flag \"--installation\""))
+				Expect(err).To(MatchError("could not parse import-installation flags: the required flag `-i, --installation' was not specified"))
 			})
 		})
 

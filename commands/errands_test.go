@@ -86,7 +86,7 @@ var _ = Describe("Errands", func() {
 			Context("when an unknown flag is passed", func() {
 				It("returns an error", func() {
 					err := command.Execute([]string{"--unknown-flag"})
-					Expect(err).To(MatchError("could not parse errands flags: flag provided but not defined: -unknown-flag"))
+					Expect(err).To(MatchError("could not parse errands flags: unknown flag `unknown-flag'"))
 				})
 			})
 
@@ -109,7 +109,7 @@ var _ = Describe("Errands", func() {
 			Context("when the product name is missing", func() {
 				It("returns an error", func() {
 					err := command.Execute([]string{})
-					Expect(err).To(MatchError("could not parse errands flags: missing required flag \"--product-name\""))
+					Expect(err).To(MatchError("could not parse errands flags: the required flag `-p, --product-name' was not specified"))
 				})
 			})
 		})

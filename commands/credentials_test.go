@@ -92,7 +92,7 @@ var _ = Describe("Credentials", func() {
 					err := command.Execute([]string{
 						"--credential-reference", "some-credential",
 					})
-					Expect(err).To(MatchError("could not parse credential-references flags: missing required flag \"--product-name\""))
+					Expect(err).To(MatchError("could not parse credential-references flags: the required flag `-p, --product-name' was not specified"))
 				})
 			})
 
@@ -103,7 +103,7 @@ var _ = Describe("Credentials", func() {
 					err := command.Execute([]string{
 						"--product-name", "some-product",
 					})
-					Expect(err).To(MatchError("could not parse credential-references flags: missing required flag \"--credential-reference\""))
+					Expect(err).To(MatchError("could not parse credential-references flags: the required flag `-c, --credential-reference' was not specified"))
 				})
 			})
 

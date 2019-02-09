@@ -703,7 +703,7 @@ var _ = Describe("ConfigureProduct", func() {
 				It("returns an error", func() {
 					command := commands.NewConfigureProduct(func() []string { return nil }, service, "", logger)
 					err := command.Execute([]string{"--badflag"})
-					Expect(err).To(MatchError("could not parse configure-product flags: flag provided but not defined: -badflag"))
+					Expect(err).To(MatchError("could not parse configure-product flags: unknown flag `badflag'"))
 				})
 			})
 

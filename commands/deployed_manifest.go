@@ -30,7 +30,7 @@ func NewDeployedManifest(service deployedManifestService, logger logger) Deploye
 }
 
 func (dm DeployedManifest) Execute(args []string) error {
-	if _, err := jhanda.Parse(&dm.Options, args); err != nil {
+	if _, err := ParseArgs(&dm.Options, args); err != nil {
 		return fmt.Errorf("could not parse staged-manifest flags: %s", err)
 	}
 

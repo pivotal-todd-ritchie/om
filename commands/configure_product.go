@@ -56,7 +56,7 @@ func NewConfigureProduct(environFunc func() []string, service configureProductSe
 }
 
 func (cp ConfigureProduct) Execute(args []string) error {
-	if _, err := jhanda.Parse(&cp.Options, args); err != nil {
+	if _, err := ParseArgs(&cp.Options, args); err != nil {
 		return fmt.Errorf("could not parse configure-product flags: %s", err)
 	}
 

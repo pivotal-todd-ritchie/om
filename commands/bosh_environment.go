@@ -50,7 +50,7 @@ func (be BoshEnvironment) Target() string {
 }
 
 func (be BoshEnvironment) Execute(args []string) error {
-	if _, err := jhanda.Parse(&be.Options, args); err != nil {
+	if _, err := ParseArgs(&be.Options, args); err != nil {
 		return fmt.Errorf("could not parse bosh-env flags: %s", err)
 	}
 

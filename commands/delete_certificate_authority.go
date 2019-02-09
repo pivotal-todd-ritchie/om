@@ -25,7 +25,7 @@ func NewDeleteCertificateAuthority(service deleteCertificateAuthorityService, lo
 }
 
 func (a DeleteCertificateAuthority) Execute(args []string) error {
-	if _, err := jhanda.Parse(&a.Options, args); err != nil {
+	if _, err := ParseArgs(&a.Options, args); err != nil {
 		return fmt.Errorf("could not parse delete-certificate-authority flags: %s", err)
 	}
 

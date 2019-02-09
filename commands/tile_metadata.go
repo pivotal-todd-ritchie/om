@@ -26,7 +26,7 @@ func NewTileMetadata(stdout logger) TileMetadata {
 }
 
 func (t TileMetadata) Execute(args []string) error {
-	if _, err := jhanda.Parse(&t.Options, args); err != nil {
+	if _, err := ParseArgs(&t.Options, args); err != nil {
 		return fmt.Errorf("could not parse tile-metadata flags: %s", err)
 	}
 

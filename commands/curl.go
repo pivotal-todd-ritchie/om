@@ -36,7 +36,7 @@ func NewCurl(service curlService, stdout logger, stderr logger) Curl {
 }
 
 func (c Curl) Execute(args []string) error {
-	if _, err := jhanda.Parse(&c.Options, args); err != nil {
+	if _, err := ParseArgs(&c.Options, args); err != nil {
 		return fmt.Errorf("could not parse curl flags: %s", err)
 	}
 

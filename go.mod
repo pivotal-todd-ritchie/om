@@ -14,6 +14,7 @@ require (
 	github.com/google/go-querystring v0.0.0-20170111101155-53e6ce116135
 	github.com/gosuri/uilive v0.0.0-20170323041506-ac356e6e42cd // indirect
 	github.com/hashicorp/go-version v1.1.0
+	github.com/jessevdk/go-flags v1.4.0
 	github.com/nu7hatch/gouuid v0.0.0-20131221200532-179d4d0c4d8d // indirect
 	github.com/olekukonko/tablewriter v0.0.0-20180130162743-b8a9be070da4
 	github.com/onsi/ginkgo v1.7.0

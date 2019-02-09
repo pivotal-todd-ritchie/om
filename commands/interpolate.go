@@ -40,7 +40,7 @@ func NewInterpolate(environFunc func() []string, logger logger) Interpolate {
 }
 
 func (c Interpolate) Execute(args []string) error {
-	if _, err := jhanda.Parse(&c.Options, args); err != nil {
+	if _, err := ParseArgs(&c.Options, args); err != nil {
 		return fmt.Errorf("could not parse interpolate flags: %s", err)
 	}
 

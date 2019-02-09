@@ -269,14 +269,14 @@ stemcell: "1234.6"
 	Context("when an unknown flag is provided", func() {
 		It("returns an error", func() {
 			err := command.Execute([]string{"--badflag"})
-			Expect(err).To(MatchError("could not parse assign-stemcell flags: flag provided but not defined: -badflag"))
+			Expect(err).To(MatchError("could not parse assign-stemcell flags: unknown flag `badflag'"))
 		})
 	})
 
 	Context("when the product flag is not provided", func() {
 		It("returns an error", func() {
 			err := command.Execute([]string{})
-			Expect(err).To(MatchError("could not parse assign-stemcell flags: missing required flag \"--product\""))
+			Expect(err).To(MatchError("could not parse assign-stemcell flags: the required flag `-p, --product' was not specified"))
 		})
 	})
 })

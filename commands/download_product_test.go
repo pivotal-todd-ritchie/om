@@ -506,14 +506,14 @@ output-directory: %s
 		Context("when an unknown flag is provided", func() {
 			It("returns an error", func() {
 				err = command.Execute([]string{"--badflag"})
-				Expect(err).To(MatchError("could not parse download-product flags: flag provided but not defined: -badflag"))
+				Expect(err).To(MatchError("could not parse download-product flags: unknown flag `badflag'"))
 			})
 		})
 
 		Context("when a required flag is not provided", func() {
 			It("returns an error", func() {
 				err = command.Execute([]string{})
-				Expect(err).To(MatchError("could not parse download-product flags: missing required flag \"--pivnet-api-token\""))
+				Expect(err.Error()).To(MatchRegexp("could not parse download-product flags: the required flags .* were not specified"))
 			})
 		})
 

@@ -422,14 +422,14 @@ product-properties:
 		Context("when an unknown flag is provided", func() {
 			It("returns an error", func() {
 				err := command.Execute([]string{"--badflag"})
-				Expect(err).To(MatchError("could not parse config-template flags: flag provided but not defined: -badflag"))
+				Expect(err).To(MatchError("could not parse config-template flags: unknown flag `badflag'"))
 			})
 		})
 
 		Context("when the product flag is not provided", func() {
 			It("returns an error", func() {
 				err := command.Execute([]string{})
-				Expect(err).To(MatchError("could not parse config-template flags: missing required flag \"--product\""))
+				Expect(err).To(MatchError("could not parse config-template flags: the required flag `-p, --product' was not specified"))
 			})
 		})
 

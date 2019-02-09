@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/pivotal-cf/jhanda"
 	"github.com/pivotal-cf/om/api"
 	"github.com/pivotal-cf/om/commands"
 	"github.com/pivotal-cf/om/commands/fakes"
@@ -373,14 +372,14 @@ var _ = Describe("ApplyChanges", func() {
 		})
 	})
 
-	Describe("Usage", func() {
-		It("returns usage information for the command", func() {
-			command := commands.NewApplyChanges(nil, nil, nil, nil, 1)
-			Expect(command.Usage()).To(Equal(jhanda.Usage{
-				Description:      "This authenticated command kicks off an install of any staged changes on the Ops Manager.",
-				ShortDescription: "triggers an install on the Ops Manager targeted",
-				Flags:            command.Options,
-			}))
-		})
-	})
+	//Describe("Usage", func() {
+	//	It("returns usage information for the command", func() {
+	//		command := commands.NewApplyChanges(nil, nil, nil, nil, 1)
+	//		Expect(command.Usage()).To(Equal(jhanda.Usage{
+	//			Description:      "This authenticated command kicks off an install of any staged changes on the Ops Manager.",
+	//			ShortDescription: "triggers an install on the Ops Manager targeted",
+	//			Flags:            command.Options,
+	//		}))
+	//	})
+	//})
 })

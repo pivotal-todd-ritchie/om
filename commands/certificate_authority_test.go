@@ -108,7 +108,7 @@ var _ = Describe("Certificate Authority", func() {
 						"--bogus", "nothing",
 					})
 					Expect(err).To(MatchError(
-						"could not parse certificate-authority flags: flag provided but not defined: -bogus",
+						"could not parse certificate-authority flags: unknown flag `bogus'",
 					))
 				})
 			})
@@ -132,7 +132,7 @@ var _ = Describe("Certificate Authority", func() {
 			Context("when the --id flag is missing", func() {
 				It("returns an error", func() {
 					err := certificateAuthority.Execute([]string{})
-					Expect(err).To(MatchError(`could not parse certificate-authority flags: missing required flag "--id"`))
+					Expect(err).To(MatchError("could not parse certificate-authority flags: the required flag `--id' was not specified"))
 				})
 			})
 

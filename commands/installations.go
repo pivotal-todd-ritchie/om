@@ -30,7 +30,7 @@ func NewInstallations(service installationsService, presenter presenters.Formatt
 }
 
 func (i Installations) Execute(args []string) error {
-	if _, err := jhanda.Parse(&i.Options, args); err != nil {
+	if _, err := ParseArgs(&i.Options, args); err != nil {
 		return fmt.Errorf("could not parse installations flags: %s", err)
 	}
 

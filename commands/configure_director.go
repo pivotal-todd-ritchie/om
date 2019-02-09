@@ -67,7 +67,7 @@ func (c ConfigureDirector) Usage() jhanda.Usage {
 }
 
 func (c ConfigureDirector) Execute(args []string) error {
-	if _, err := jhanda.Parse(&c.Options, args); err != nil {
+	if _, err := ParseArgs(&c.Options, args); err != nil {
 		return fmt.Errorf("could not parse configure-director flags: %s", err)
 	}
 

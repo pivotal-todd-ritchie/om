@@ -13,7 +13,7 @@ type ConfigureSAMLAuthentication struct {
 	logger  logger
 	Options struct {
 		ConfigFile           string `long:"config"                short:"c"  description:"path to yml file for configuration (keys must match the following command line flags)"`
-		DecryptionPassphrase string `long:"decryption-passphrase" short:"dp" required:"true" description:"passphrase used to encrypt the installation"`
+		DecryptionPassphrase string `long:"decryption-passphrase" short:"d" required:"true" description:"passphrase used to encrypt the installation"`
 		HTTPProxyURL         string `long:"http-proxy-url"                                   description:"proxy for outbound HTTP network traffic"`
 		HTTPSProxyURL        string `long:"https-proxy-url"                                  description:"proxy for outbound HTTPS network traffic"`
 		NoProxy              string `long:"no-proxy"                                         description:"comma-separated list of hosts that do not go through the proxy"`

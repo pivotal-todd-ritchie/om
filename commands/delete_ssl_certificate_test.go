@@ -50,7 +50,7 @@ var _ = Describe("DeleteSSLCertificate", func() {
 			Context("when an unknown flag is provided", func() {
 				It("returns an error", func() {
 					err := command.Execute([]string{"--badflag"})
-					Expect(err).To(MatchError("could not parse delete-ssl-certificate flags: flag provided but not defined: -badflag"))
+					Expect(err).To(MatchError("could not parse delete-ssl-certificate flags: unknown flag `badflag'"))
 				})
 			})
 		})

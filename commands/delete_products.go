@@ -27,7 +27,7 @@ func NewDeleteProduct(service deleteProductService) DeleteProduct {
 }
 
 func (dp DeleteProduct) Execute(args []string) error {
-	if _, err := jhanda.Parse(&dp.Options, args); err != nil {
+	if _, err := ParseArgs(&dp.Options, args); err != nil {
 		return fmt.Errorf("could not parse delete-product flags: %s", err)
 	}
 

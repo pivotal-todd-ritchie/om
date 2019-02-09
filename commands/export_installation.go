@@ -35,7 +35,7 @@ func (ei ExportInstallation) Usage() jhanda.Usage {
 }
 
 func (ei ExportInstallation) Execute(args []string) error {
-	if _, err := jhanda.Parse(&ei.Options, args); err != nil {
+	if _, err := ParseArgs(&ei.Options, args); err != nil {
 		return fmt.Errorf("could not parse export-installation flags: %s", err)
 	}
 

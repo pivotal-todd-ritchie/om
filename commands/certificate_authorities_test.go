@@ -81,7 +81,7 @@ var _ = Describe("Certificate Authorities", func() {
 			It("returns an error", func() {
 				err := certificateAuthorities.Execute([]string{"--bogus", "nothing"})
 				Expect(err).To(MatchError(
-					"could not parse certificate-authorities flags: flag provided but not defined: -bogus",
+					"could not parse certificate-authorities flags: unknown flag `bogus'",
 				))
 			})
 		})

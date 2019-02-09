@@ -92,7 +92,7 @@ var _ = Describe("Installations", func() {
 			Context("when an unknown flag is passed", func() {
 				It("returns an error", func() {
 					err := command.Execute([]string{"--unknown-flag"})
-					Expect(err).To(MatchError("could not parse installations flags: flag provided but not defined: -unknown-flag"))
+					Expect(err).To(MatchError("could not parse installations flags: unknown flag `unknown-flag'"))
 				})
 			})
 

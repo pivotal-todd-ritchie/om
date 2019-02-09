@@ -239,7 +239,7 @@ ldap-referrals: "follow"
 				It("returns an error", func() {
 					command := commands.NewConfigureLDAPAuthentication(nil, nil)
 					err := command.Execute(nil)
-					Expect(err).To(MatchError("could not parse configure-ldap-authentication flags: missing required flag \"--decryption-passphrase\""))
+					Expect(err.Error()).To(MatchRegexp("could not parse configure-ldap-authentication flags: the required flags .* were not specified"))
 				})
 			})
 		})

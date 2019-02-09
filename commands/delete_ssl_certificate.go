@@ -26,7 +26,7 @@ func NewDeleteSSLCertificate(service deleteSSLCertificateService, logger logger)
 }
 
 func (c DeleteSSLCertificate) Execute(args []string) error {
-	if _, err := jhanda.Parse(&c.Options, args); err != nil {
+	if _, err := ParseArgs(&c.Options, args); err != nil {
 		return fmt.Errorf("could not parse delete-ssl-certificate flags: %s", err)
 	}
 

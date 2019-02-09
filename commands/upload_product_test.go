@@ -316,7 +316,7 @@ product: will-be-overridden-by-command-line
 			It("returns an error", func() {
 				command := commands.NewUploadProduct(multipart, metadataExtractor, fakeService, logger)
 				err := command.Execute([]string{"--badflag"})
-				Expect(err).To(MatchError("could not parse upload-product flags: flag provided but not defined: -badflag"))
+				Expect(err).To(MatchError("could not parse upload-product flags: unknown flag `badflag'"))
 			})
 		})
 
@@ -324,7 +324,7 @@ product: will-be-overridden-by-command-line
 			It("returns an error", func() {
 				command := commands.NewUploadProduct(multipart, metadataExtractor, fakeService, logger)
 				err := command.Execute([]string{})
-				Expect(err).To(MatchError("could not parse upload-product flags: missing required flag \"--product\""))
+				Expect(err).To(MatchError("could not parse upload-product flags: the required flag `-p, --product' was not specified"))
 			})
 		})
 

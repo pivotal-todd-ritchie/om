@@ -33,7 +33,7 @@ func NewStageProduct(service stageProductService, logger logger) StageProduct {
 }
 
 func (sp StageProduct) Execute(args []string) error {
-	if _, err := jhanda.Parse(&sp.Options, args); err != nil {
+	if _, err := ParseArgs(&sp.Options, args); err != nil {
 		return fmt.Errorf("could not parse stage-product flags: %s", err)
 	}
 

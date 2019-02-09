@@ -353,7 +353,7 @@ var _ = Describe("UploadStemcell", func() {
 			It("returns an error", func() {
 				command := commands.NewUploadStemcell(multipart, fakeService, logger)
 				err := command.Execute([]string{"--badflag"})
-				Expect(err).To(MatchError("could not parse upload-stemcell flags: flag provided but not defined: -badflag"))
+				Expect(err).To(MatchError("could not parse upload-stemcell flags: unknown flag `badflag'"))
 			})
 		})
 
@@ -361,7 +361,7 @@ var _ = Describe("UploadStemcell", func() {
 			It("returns an error", func() {
 				command := commands.NewUploadStemcell(multipart, fakeService, logger)
 				err := command.Execute([]string{})
-				Expect(err).To(MatchError("could not parse upload-stemcell flags: missing required flag \"--stemcell\""))
+				Expect(err).To(MatchError("could not parse upload-stemcell flags: the required flag `-s, --stemcell' was not specified"))
 			})
 		})
 

@@ -195,7 +195,7 @@ decryption-passphrase: some-passphrase
 				It("returns an error", func() {
 					command := commands.NewConfigureAuthentication(service, logger)
 					err := command.Execute([]string{"--banana"})
-					Expect(err).To(MatchError("could not parse configure-authentication flags: flag provided but not defined: -banana"))
+					Expect(err).To(MatchError("could not parse configure-authentication flags: unknown flag `banana'"))
 				})
 			})
 
@@ -288,7 +288,7 @@ decryption-passphrase: some-passphrase
 						"--password", "some-password",
 						"--decryption-passphrase", "some-passphrase",
 					})
-					Expect(err).To(MatchError("could not parse configure-authentication flags: missing required flag \"--username\""))
+					Expect(err).To(MatchError("could not parse configure-authentication flags: the required flag `-u, --username' was not specified"))
 				})
 			})
 
@@ -299,7 +299,7 @@ decryption-passphrase: some-passphrase
 						"--username", "some-username",
 						"--decryption-passphrase", "some-passphrase",
 					})
-					Expect(err).To(MatchError("could not parse configure-authentication flags: missing required flag \"--password\""))
+					Expect(err).To(MatchError("could not parse configure-authentication flags: the required flag `-p, --password' was not specified"))
 				})
 			})
 
@@ -310,7 +310,7 @@ decryption-passphrase: some-passphrase
 						"--username", "some-username",
 						"--password", "some-password",
 					})
-					Expect(err).To(MatchError("could not parse configure-authentication flags: missing required flag \"--decryption-passphrase\""))
+					Expect(err).To(MatchError("could not parse configure-authentication flags: the required flag `-d, --decryption-passphrase' was not specified"))
 				})
 			})
 		})

@@ -22,8 +22,8 @@ type UploadStemcell struct {
 	Options   struct {
 		Stemcell string `long:"stemcell" short:"s" required:"true" description:"path to stemcell"`
 		Force    bool   `long:"force"    short:"f"                 description:"upload stemcell even if it already exists on the target Ops Manager"`
-		Floating bool   `long:"floating" default:"true"            description:"assigns the stemcell to all compatible products "`
-		Shasum   string `long:"shasum" short:"sha" description:"shasum of the provided stemcell file to be used for validation"`
+		Floating bool   `long:"floating"                           description:"assigns the stemcell to all compatible products "`
+		Shasum   string `long:"shasum" description:"shasum of the provided stemcell file to be used for validation"`
 	}
 }
 
@@ -58,7 +58,9 @@ func (us UploadStemcell) Usage() jhanda.Usage {
 }
 
 func (us UploadStemcell) Execute(args []string) error {
-	if _, err := jhanda.Parse(&us.Options, args); err != nil {
+	us.Options.Floating = true
+
+	if _, err := ParseArgs(&us.Options, args); err != nil {
 		return fmt.Errorf("could not parse upload-stemcell flags: %s", err)
 	}
 

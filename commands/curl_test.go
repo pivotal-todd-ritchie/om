@@ -217,7 +217,7 @@ var _ = Describe("Curl", func() {
 			Context("when the flags cannot be parsed", func() {
 				It("returns an error", func() {
 					err := command.Execute([]string{"--bad-flag", "some-value"})
-					Expect(err).To(MatchError("could not parse curl flags: flag provided but not defined: -bad-flag"))
+					Expect(err).To(MatchError("could not parse curl flags: unknown flag `bad-flag'"))
 				})
 			})
 
@@ -227,7 +227,7 @@ var _ = Describe("Curl", func() {
 						"--request", "GET",
 						"--data", `{"some-key": "some-value"}`,
 					})
-					Expect(err).To(MatchError("could not parse curl flags: missing required flag \"--path\""))
+					Expect(err).To(MatchError("could not parse curl flags: the required flag `-p, --path' was not specified"))
 				})
 			})
 

@@ -28,7 +28,7 @@ func NewUnstageProduct(service unstageProductService, logger logger) UnstageProd
 }
 
 func (up UnstageProduct) Execute(args []string) error {
-	if _, err := jhanda.Parse(&up.Options, args); err != nil {
+	if _, err := ParseArgs(&up.Options, args); err != nil {
 		return fmt.Errorf("could not parse unstage-product flags: %s", err)
 	}
 

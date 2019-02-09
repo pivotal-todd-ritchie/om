@@ -206,7 +206,7 @@ decryption-passphrase: some-passphrase
 				It("returns an error", func() {
 					command := commands.NewConfigureSAMLAuthentication(&fakes.ConfigureAuthenticationService{}, &fakes.Logger{})
 					err := command.Execute([]string{"--banana"})
-					Expect(err).To(MatchError("could not parse configure-saml-authentication flags: flag provided but not defined: -banana"))
+					Expect(err).To(MatchError("could not parse configure-saml-authentication flags: unknown flag `banana'"))
 				})
 			})
 
@@ -316,7 +316,7 @@ decryption-passphrase: some-passphrase
 					})
 					Expect(err).To(HaveOccurred())
 
-					Expect(err).To(MatchError("could not parse configure-saml-authentication flags: missing required flag \"--saml-idp-metadata\""))
+					Expect(err).To(MatchError("could not parse configure-saml-authentication flags: the required flag `--saml-idp-metadata' was not specified"))
 				})
 			})
 
@@ -331,7 +331,7 @@ decryption-passphrase: some-passphrase
 					})
 					Expect(err).To(HaveOccurred())
 
-					Expect(err).To(MatchError("could not parse configure-saml-authentication flags: missing required flag \"--saml-bosh-idp-metadata\""))
+					Expect(err).To(MatchError("could not parse configure-saml-authentication flags: the required flag `--saml-bosh-idp-metadata' was not specified"))
 				})
 			})
 
@@ -346,7 +346,7 @@ decryption-passphrase: some-passphrase
 					})
 					Expect(err).To(HaveOccurred())
 
-					Expect(err).To(MatchError("could not parse configure-saml-authentication flags: missing required flag \"--saml-rbac-admin-group\""))
+					Expect(err).To(MatchError("could not parse configure-saml-authentication flags: the required flag `--saml-rbac-admin-group' was not specified"))
 				})
 			})
 
@@ -361,7 +361,7 @@ decryption-passphrase: some-passphrase
 					})
 					Expect(err).To(HaveOccurred())
 
-					Expect(err).To(MatchError("could not parse configure-saml-authentication flags: missing required flag \"--saml-rbac-groups-attribute\""))
+					Expect(err).To(MatchError("could not parse configure-saml-authentication flags: the required flag `--saml-rbac-groups-attribute' was not specified"))
 				})
 			})
 
@@ -373,7 +373,7 @@ decryption-passphrase: some-passphrase
 						"--saml-bosh-idp-metadata", "https://bosh-saml.example.com:8080",
 						"--saml-rbac-admin-group", "opsman.full_control",
 					})
-					Expect(err).To(MatchError("could not parse configure-saml-authentication flags: missing required flag \"--decryption-passphrase\""))
+					Expect(err.Error()).To(MatchRegexp("could not parse configure-saml-authentication flags: the required flags .* were not specified"))
 				})
 			})
 		})

@@ -16,10 +16,10 @@ type ApplyChanges struct {
 	logWriter      logWriter
 	waitDuration   time.Duration
 	Options        struct {
-		IgnoreWarnings        bool     `short:"i"   long:"ignore-warnings"      description:"ignore issues reported by Ops Manager when applying changes"`
-		SkipDeployProducts    bool     `short:"sdp" long:"skip-deploy-products" description:"skip deploying products when applying changes - just update the director"`
-		SkipUnchangedProducts bool     `short:"sup"   long:"skip-unchanged-products"         description:"skip deploying unchanged products - just run changed or new products --skip-unchanged-products (OM 2.2+)"`
-		ProductNames          []string `short:"n"   long:"product-name"         description:"name of the product(s) to deploy, cannot be used in conjunction with --skip-deploy-products (OM 2.2+)"`
+		IgnoreWarnings        bool     `short:"i" long:"ignore-warnings"         description:"ignore issues reported by Ops Manager when applying changes"`
+		SkipDeployProducts    bool     `short:"d" long:"skip-deploy-products"    description:"skip deploying products when applying changes - just update the director"`
+		SkipUnchangedProducts bool     `short:"u" long:"skip-unchanged-products" description:"skip deploying unchanged products - just run changed or new products --skip-unchanged-products (OM 2.2+)"`
+		ProductNames          []string `short:"n" long:"product-name"            description:"name of the product(s) to deploy, cannot be used in conjunction with --skip-deploy-products (OM 2.2+)"`
 	}
 }
 
@@ -49,7 +49,7 @@ func NewApplyChanges(service applyChangesService, pendingService pendingChangesS
 }
 
 func (ac ApplyChanges) Execute(args []string) error {
-	if _, err := jhanda.Parse(&ac.Options, args); err != nil {
+	if _, err := ParseArgs(&ac.Options, args); err != nil {
 		return fmt.Errorf("could not parse apply-changes flags: %s", err)
 	}
 

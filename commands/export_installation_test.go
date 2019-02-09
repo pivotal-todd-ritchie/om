@@ -50,7 +50,7 @@ var _ = Describe("ExportInstallation", func() {
 			It("returns an error", func() {
 				command := commands.NewExportInstallation(fakeService, logger)
 				err := command.Execute([]string{"--badflag"})
-				Expect(err).To(MatchError("could not parse export-installation flags: flag provided but not defined: -badflag"))
+				Expect(err).To(MatchError("could not parse export-installation flags: unknown flag `badflag'"))
 			})
 		})
 
@@ -58,7 +58,7 @@ var _ = Describe("ExportInstallation", func() {
 			It("returns an error and prints out usage", func() {
 				command := commands.NewExportInstallation(fakeService, logger)
 				err := command.Execute([]string{})
-				Expect(err).To(MatchError("could not parse export-installation flags: missing required flag \"--output-file\""))
+				Expect(err.Error()).To(MatchRegexp("could not parse export-installation flags: the required flag .* was not specified"))
 			})
 		})
 

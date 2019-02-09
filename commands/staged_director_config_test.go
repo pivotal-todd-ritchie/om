@@ -326,7 +326,7 @@ properties-configuration:
 			It("returns an error", func() {
 				command := commands.NewStagedDirectorConfig(fakeService, logger)
 				err := command.Execute([]string{"--badflag"})
-				Expect(err).To(MatchError("could not parse staged-config flags: flag provided but not defined: -badflag"))
+				Expect(err).To(MatchError("could not parse staged-config flags: unknown flag `badflag'"))
 			})
 		})
 

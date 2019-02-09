@@ -33,7 +33,7 @@ func NewErrands(presenter presenters.FormattedPresenter, service errandsService)
 }
 
 func (e Errands) Execute(args []string) error {
-	if _, err := jhanda.Parse(&e.Options, args); err != nil {
+	if _, err := ParseArgs(&e.Options, args); err != nil {
 		return fmt.Errorf("could not parse errands flags: %s", err)
 	}
 

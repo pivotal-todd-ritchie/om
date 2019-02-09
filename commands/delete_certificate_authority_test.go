@@ -56,13 +56,13 @@ var _ = Describe("DeleteCertificateAuthority", func() {
 			Context("when an unknown flag is provided", func() {
 				It("returns an error", func() {
 					err := command.Execute([]string{"--badflag"})
-					Expect(err).To(MatchError("could not parse delete-certificate-authority flags: flag provided but not defined: -badflag"))
+					Expect(err).To(MatchError("could not parse delete-certificate-authority flags: unknown flag `badflag'"))
 				})
 			})
 			Context("when the id flag is not provided", func() {
 				It("returns an error", func() {
 					err := command.Execute([]string{})
-					Expect(err).To(MatchError("could not parse delete-certificate-authority flags: missing required flag \"--id\""))
+					Expect(err).To(MatchError("could not parse delete-certificate-authority flags: the required flag `--id' was not specified"))
 				})
 			})
 		})

@@ -50,7 +50,7 @@ var _ = Describe("UnstageProduct", func() {
 			It("returns an error", func() {
 				command := commands.NewUnstageProduct(fakeService, logger)
 				err := command.Execute([]string{"--badflag"})
-				Expect(err).To(MatchError("could not parse unstage-product flags: flag provided but not defined: -badflag"))
+				Expect(err).To(MatchError("could not parse unstage-product flags: unknown flag `badflag'"))
 			})
 		})
 
@@ -58,7 +58,7 @@ var _ = Describe("UnstageProduct", func() {
 			It("returns an error", func() {
 				command := commands.NewUnstageProduct(fakeService, logger)
 				err := command.Execute([]string{})
-				Expect(err).To(MatchError("could not parse unstage-product flags: missing required flag \"--product-name\""))
+				Expect(err).To(MatchError("could not parse unstage-product flags: the required flag `-p, --product-name' was not specified"))
 			})
 		})
 

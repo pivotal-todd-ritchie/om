@@ -26,7 +26,7 @@ func NewUpdateSSLCertificate(service updateSSLCertificateService, logger logger)
 }
 
 func (c UpdateSSLCertificate) Execute(args []string) error {
-	if _, err := jhanda.Parse(&c.Options, args); err != nil {
+	if _, err := ParseArgs(&c.Options, args); err != nil {
 		return fmt.Errorf("could not parse update-ssl-certificate flags: %s", err)
 	}
 

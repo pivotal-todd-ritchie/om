@@ -34,7 +34,7 @@ func NewConfigTemplate(metadataExtractor metadataExtractor, logger logger) Confi
 }
 
 func (ct ConfigTemplate) Execute(args []string) error {
-	if _, err := jhanda.Parse(&ct.Options, args); err != nil {
+	if _, err := ParseArgs(&ct.Options, args); err != nil {
 		return fmt.Errorf("could not parse config-template flags: %s", err)
 	}
 

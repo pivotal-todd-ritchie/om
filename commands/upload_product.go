@@ -19,7 +19,7 @@ type UploadProduct struct {
 	Options   struct {
 		ConfigFile      string `long:"config"           short:"c"   description:"path to yml file for configuration (keys must match the following command line flags)"`
 		Product         string `long:"product"          short:"p"   description:"path to product" required:"true"`
-		PollingInterval int    `long:"polling-interval" short:"pi"  description:"interval (in seconds) at which to print status" default:"1"`
+		PollingInterval int    `long:"polling-interval" short:"i"  description:"interval (in seconds) at which to print status" default:"1"`
 		Sha256          string `long:"sha256"                       description:"sha256 of the provided product file to be used for validation"`
 		Version         string `long:"product-version"                      description:"version of the provided product file to be used for validation"`
 	}

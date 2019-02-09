@@ -20,7 +20,7 @@ type ImportInstallation struct {
 	Options    struct {
 		ConfigFile      string `long:"config"                short:"c"                  description:"path to yml file for configuration (keys must match the following command line flags)"`
 		Installation    string `long:"installation"          short:"i"  required:"true" description:"path to installation."`
-		PollingInterval int    `long:"polling-interval"      short:"pi"                 description:"interval (in seconds) to check OpsManager availability" default:"10"`
+		PollingInterval int    `long:"polling-interval"      short:"p"                 description:"interval (in seconds) to check OpsManager availability" default:"10"`
 	}
 }
 

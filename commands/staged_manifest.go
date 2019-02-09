@@ -29,7 +29,7 @@ func NewStagedManifest(service stagedManifestService, logger logger) StagedManif
 }
 
 func (sm StagedManifest) Execute(args []string) error {
-	if _, err := jhanda.Parse(&sm.Options, args); err != nil {
+	if _, err := ParseArgs(&sm.Options, args); err != nil {
 		return fmt.Errorf("could not parse staged-manifest flags: %s", err)
 	}
 

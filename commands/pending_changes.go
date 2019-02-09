@@ -29,7 +29,7 @@ func NewPendingChanges(presenter presenters.FormattedPresenter, service pendingC
 }
 
 func (pc PendingChanges) Execute(args []string) error {
-	if _, err := jhanda.Parse(&pc.Options, args); err != nil {
+	if _, err := ParseArgs(&pc.Options, args); err != nil {
 		return fmt.Errorf("could not parse pending-changes flags: %s", err)
 	}
 

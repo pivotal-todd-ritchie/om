@@ -58,7 +58,7 @@ key: value
 				err := command.Execute([]string{
 					"--unknown-flag", "unknown-value",
 				})
-				Expect(err).To(MatchError(ContainSubstring("flag provided but not defined")))
+				Expect(err).To(MatchError(ContainSubstring("unknown flag `unknown-flag'")))
 			})
 		})
 

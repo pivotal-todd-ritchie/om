@@ -25,7 +25,7 @@ type CreateVMExtension struct {
 		VarsFile        []string `long:"vars-file"          short:"l"   description:"Load variables from a YAML file"`
 		VarsEnv         []string `long:"vars-env"                       description:"Load variables from environment variables (e.g.: 'MY' to load MY_var=value)"`
 		OpsFile         []string `long:"ops-file"           short:"o"   description:"YAML operations file"`
-		CloudProperties string   `long:"cloud-properties"   short:"cp"  description:"cloud properties in JSON format"`
+		CloudProperties string   `long:"cloud-properties"   short:"p"  description:"cloud properties in JSON format"`
 	}
 }
 
@@ -38,7 +38,7 @@ func NewCreateVMExtension(environFunc func() []string, service createVMExtension
 }
 
 func (c CreateVMExtension) Execute(args []string) error {
-	if _, err := jhanda.Parse(&c.Options, args); err != nil {
+	if _, err := ParseArgs(&c.Options, args); err != nil {
 		return fmt.Errorf("could not parse create-vm-extension flags: %s", err)
 	}
 

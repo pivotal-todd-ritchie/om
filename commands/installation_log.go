@@ -28,7 +28,7 @@ func NewInstallationLog(service installationLogService, logger logger) Installat
 }
 
 func (i InstallationLog) Execute(args []string) error {
-	if _, err := jhanda.Parse(&i.Options, args); err != nil {
+	if _, err := ParseArgs(&i.Options, args); err != nil {
 		return fmt.Errorf("could not parse installation-log flags: %s", err)
 	}
 

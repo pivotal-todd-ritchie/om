@@ -524,14 +524,14 @@ properties-configuration:
 				It("returns an error ", func() {
 					err := command.Execute([]string{})
 					Expect(err).To(HaveOccurred())
-					Expect(err.Error()).To(ContainSubstring("missing required flag \"--config\""))
+					Expect(err.Error()).To(ContainSubstring("the required flag `-c, --config' was not specified"))
 				})
 			})
 
 			Context("when flag parser fails", func() {
 				It("returns an error", func() {
 					err := command.Execute([]string{"--foo", "bar"})
-					Expect(err).To(MatchError("could not parse configure-director flags: flag provided but not defined: -foo"))
+					Expect(err).To(MatchError("could not parse configure-director flags: unknown flag `foo'"))
 				})
 			})
 

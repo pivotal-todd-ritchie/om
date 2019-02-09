@@ -53,7 +53,7 @@ var _ = Describe("DeleteProduct", func() {
 					err := command.Execute([]string{
 						"--product-version", "1.2.3",
 					})
-					Expect(err).To(MatchError("could not parse delete-product flags: missing required flag \"--product-name\""))
+					Expect(err).To(MatchError("could not parse delete-product flags: the required flag `-p, --product-name' was not specified"))
 				})
 			})
 
@@ -62,7 +62,7 @@ var _ = Describe("DeleteProduct", func() {
 					err := command.Execute([]string{
 						"--product-name", "some-product",
 					})
-					Expect(err).To(MatchError("could not parse delete-product flags: missing required flag \"--product-version\""))
+					Expect(err).To(MatchError("could not parse delete-product flags: the required flag `-v, --product-version' was not specified"))
 				})
 			})
 		})

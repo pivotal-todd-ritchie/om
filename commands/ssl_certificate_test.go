@@ -66,7 +66,7 @@ var _ = Describe("SslCertificate", func() {
 			It("returns an error", func() {
 				err := sslCertificate.Execute([]string{"--bogus", "nothing"})
 				Expect(err).To(MatchError(
-					"could not parse ssl-certificate flags: flag provided but not defined: -bogus",
+					"could not parse ssl-certificate flags: unknown flag `bogus'",
 				))
 			})
 		})

@@ -31,7 +31,7 @@ func NewCredentials(csService credentialsService, presenter presenters.Formatted
 }
 
 func (cs Credentials) Execute(args []string) error {
-	if _, err := jhanda.Parse(&cs.Options, args); err != nil {
+	if _, err := ParseArgs(&cs.Options, args); err != nil {
 		return fmt.Errorf("could not parse credential-references flags: %s", err)
 	}
 

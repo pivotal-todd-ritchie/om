@@ -78,7 +78,7 @@ var _ = Describe("StagedProducts", func() {
 			Context("when an unknown flag is passed", func() {
 				It("returns an error", func() {
 					err := command.Execute([]string{"--unknown-flag"})
-					Expect(err).To(MatchError("could not parse staged-products flags: flag provided but not defined: -unknown-flag"))
+					Expect(err).To(MatchError("could not parse staged-products flags: unknown flag `unknown-flag'"))
 				})
 			})
 		})

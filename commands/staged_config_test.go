@@ -321,7 +321,7 @@ errand-config:
 				It("returns an error", func() {
 					command := commands.NewStagedConfig(fakeService, logger)
 					err := command.Execute([]string{"--badflag"})
-					Expect(err).To(MatchError("could not parse staged-config flags: flag provided but not defined: -badflag"))
+					Expect(err).To(MatchError("could not parse staged-config flags: unknown flag `badflag'"))
 				})
 			})
 
@@ -329,7 +329,7 @@ errand-config:
 				It("returns an error and prints out usage", func() {
 					command := commands.NewStagedConfig(fakeService, logger)
 					err := command.Execute([]string{})
-					Expect(err).To(MatchError("could not parse staged-config flags: missing required flag \"--product-name\""))
+					Expect(err).To(MatchError("could not parse staged-config flags: the required flag `-p, --product-name' was not specified"))
 				})
 			})
 

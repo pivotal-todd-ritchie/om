@@ -2,8 +2,8 @@ package commands
 
 import (
 	"fmt"
-
 	"github.com/pivotal-cf/jhanda"
+
 	"github.com/pivotal-cf/om/api"
 )
 
@@ -25,7 +25,7 @@ func NewActivateCertificateAuthority(service activateCertificateAuthorityService
 }
 
 func (a ActivateCertificateAuthority) Execute(args []string) error {
-	if _, err := jhanda.Parse(&a.Options, args); err != nil {
+	if _, err := ParseArgs(&a.Options, args); err != nil {
 		return fmt.Errorf("could not parse activate-certificate-authority flags: %s", err)
 	}
 

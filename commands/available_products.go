@@ -29,7 +29,7 @@ func NewAvailableProducts(apService availableProductsService, presenter presente
 }
 
 func (ap AvailableProducts) Execute(args []string) error {
-	if _, err := jhanda.Parse(&ap.Options, args); err != nil {
+	if _, err := ParseArgs(&ap.Options, args); err != nil {
 		return fmt.Errorf("could not parse available-products flags: %s", err)
 	}
 

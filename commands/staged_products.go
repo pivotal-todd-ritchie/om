@@ -29,7 +29,7 @@ func NewStagedProducts(presenter presenters.FormattedPresenter, service stagedPr
 }
 
 func (sp StagedProducts) Execute(args []string) error {
-	if _, err := jhanda.Parse(&sp.Options, args); err != nil {
+	if _, err := ParseArgs(&sp.Options, args); err != nil {
 		return fmt.Errorf("could not parse staged-products flags: %s", err)
 	}
 

@@ -79,7 +79,7 @@ var _ = Describe("CredentialReferences", func() {
 				It("returns an error", func() {
 					command := commands.NewCredentialReferences(fakeService, fakePresenter, logger)
 					err := command.Execute([]string{"--badflag"})
-					Expect(err).To(MatchError("could not parse credential-references flags: flag provided but not defined: -badflag"))
+					Expect(err).To(MatchError("could not parse credential-references flags: unknown flag `badflag'"))
 				})
 			})
 
@@ -87,7 +87,7 @@ var _ = Describe("CredentialReferences", func() {
 				It("returns an error", func() {
 					command := commands.NewCredentialReferences(fakeService, fakePresenter, logger)
 					err := command.Execute([]string{})
-					Expect(err).To(MatchError("could not parse credential-references flags: missing required flag \"--product-name\""))
+					Expect(err).To(MatchError("could not parse credential-references flags: the required flag `-p, --product-name' was not specified"))
 				})
 			})
 
