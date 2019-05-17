@@ -87,9 +87,9 @@ func (up UploadProduct) Execute(args []string) error {
 		up.logger.Printf("expected version matches product version.")
 	}
 
-
 	for i := 0; i <= maxProductUploadRetries; i++ {
-		prodAvailable, err := up.service.CheckProductAvailability(metadata.Name, metadata.Version)
+		var prodAvailable bool
+		prodAvailable, err = up.service.CheckProductAvailability(metadata.Name, metadata.Version)
 		if err != nil {
 			return fmt.Errorf("failed to check product availability: %s", err)
 		}

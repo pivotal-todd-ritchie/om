@@ -228,28 +228,33 @@ var _ = Describe("UploadProduct", func() {
 	})
 
 	Context("when the product fails to upload the first time with a retryable error", func() {
-		Context("when the same product is already present", func() {
+		Context("when the product is now present", func() {
 			It("does nothing and exits gracefully", func() {
+				command := commands.NewUploadProduct(multipart, metadataExtractor, fakeService, logger)
 
-			fakeService.UploadAvailableProductReturnsOnCall(0, api.UploadAvailableProductOutput{}, errors.Wrap(io.EOF, "some upload error"))
-			fakeService.UploadAvailableProductReturnsOnCall(1, api.UploadAvailableProductOutput{}, nil)
+				fakeService.UploadAvailableProductReturnsOnCall(0, api.UploadAvailableProductOutput{}, errors.Wrap(io.EOF, "some upload error"))
+				fakeService.UploadAvailableProductReturnsOnCall(1, api.UploadAvailableProductOutput{}, nil)
 				metadataExtractor.ExtractMetadataReturns(extractor.Metadata{
 					Name:    "cf",
 					Version: "1.5.0",
 				}, nil)
-				fakeService.CheckProductAvailabilityReturnsOnCall(0, false, errors.New("unknown"))
+				fakeService.CheckProductAvailabilityReturnsOnCall(0, false, nil)
 				fakeService.CheckProductAvailabilityReturnsOnCall(1, true, nil)
 
-				command := commands.NewUploadProduct(multipart, metadataExtractor, fakeService, logger)
 				err := command.Execute([]string{
 					"--product", "/path/to/some-product.tgz",
 				})
 
 				Expect(err).NotTo(HaveOccurred())
 				Expect(metadataExtractor.ExtractMetadataCallCount()).To(Equal(1))
-				Expect(fakeService.UploadAvailableProductCallCount()).To(Equal(0))
+				Expect(fakeService.UploadAvailableProductCallCount()).To(Equal(1))
 
-				format, v := logger.PrintfArgsForCall(0)
+				loggerPrintfCalls := logger.PrintfCallCount()
+
+				format, v := logger.PrintfArgsForCall(loggerPrintfCalls - 2)
+				Expect(fmt.Sprintf(format, v...)).To(Equal("retrying product upload after error: some upload error: EOF\n"))
+
+				format, v = logger.PrintfArgsForCall(loggerPrintfCalls - 1)
 				Expect(fmt.Sprintf(format, v...)).To(Equal("product cf 1.5.0 is already uploaded, nothing to be done."))
 			})
 		})
